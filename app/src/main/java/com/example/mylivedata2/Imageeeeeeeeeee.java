@@ -7,12 +7,12 @@ import android.util.Log;
 
 public class Imageeeeeeeeeee implements LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
-    public void pause()
+    public void pause1()
     {
         Log.i("My Observer ","pause");
     }
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
-    public void play(){
+    public void resume1(){
         Log.i("My Observer ","resume");
     }
 }

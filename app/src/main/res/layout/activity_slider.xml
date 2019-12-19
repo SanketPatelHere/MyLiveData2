@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Slider">
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="30dp"
+        android:background="#ccbbaa"></android.support.v4.view.ViewPager>
+    <LinearLayout
+        android:id="@+id/sliderDots"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:elevation="2dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical|center_horizontal"
+        android:background="#ccbbaa"></LinearLayout>
+    <!--<com.daimajia.slider.library.SliderLayout
+        android:id="@+id/sliderLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ccbbaa"></com.daimajia.slider.library.SliderLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:scrollbars="none"
+        ></android.support.v7.widget.RecyclerView>
+    -->
+</RelativeLayout>

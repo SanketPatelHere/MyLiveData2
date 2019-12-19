@@ -12,7 +12,7 @@
         android:id="@+id/btn1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="LiveData"
+        android:text="LiveData1"
         android:textSize="25sp"
         android:background="#ddccaa"/>
 
@@ -20,7 +20,7 @@
         android:id="@+id/btn2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="LiveData"
+        android:text="LiveData2"
         android:textSize="25sp"
         android:background="#aaddcc"/>
 
@@ -31,4 +31,12 @@
         android:text="Image Change"
         android:textSize="25sp"
         android:background="#ccddaa"/>
+
+    <Button
+        android:id="@+id/btn4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Slide"
+        android:textSize="25sp"
+        android:background="#ccaadd"/>
 </LinearLayout>

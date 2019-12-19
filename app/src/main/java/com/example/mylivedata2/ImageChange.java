@@ -141,8 +141,6 @@ public class ImageChange extends AppCompatActivity {
         Log.i("Myy start"," start");
         //setCurFrameToAnimationDrawable(animation, (frameNumber));
         super.onStart();
-        //animation.start();
-        //counter++;
 
         try
         {
@@ -160,12 +158,6 @@ public class ImageChange extends AppCompatActivity {
 
         try {
             pausedposition = lastposition;
-            //animation.stop();
-            //dataObserver.wait();
-            //runnable.wait();
-            //this.thread.interrupt();
-            //this.timer.interrupt();
-            //timer.wait();
             currentFrame = animation.getCurrent();
             for (int i1 = 0; i1 < animation.getNumberOfFrames(); i1++) {
                 checkFrame = animation.getFrame(i1);
