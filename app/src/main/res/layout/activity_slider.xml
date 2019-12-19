@@ -12,6 +12,18 @@
         android:layout_marginBottom="30dp"
         android:background="#ccbbaa"></android.support.v4.view.ViewPager>
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#bbccaa"
+        >
+        <TextView
+            android:id="@+id/tvCounter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Counter = "
+            android:textSize="25sp"/>
+    </LinearLayout>
+    <LinearLayout
         android:id="@+id/sliderDots"
         android:layout_width="match_parent"
         android:layout_height="30dp"
@@ -19,7 +31,9 @@
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:gravity="center_vertical|center_horizontal"
-        android:background="#ccbbaa"></LinearLayout>
+        android:background="#ccbbaa">
+
+    </LinearLayout>
     <!--<com.daimajia.slider.library.SliderLayout
         android:id="@+id/sliderLayout"
         android:layout_width="match_parent"

@@ -10,6 +10,7 @@ public class Imageeeeeeeeeee implements LifecycleObserver {
     public void pause1()
     {
         Log.i("My Observer ","pause");
+
     }
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     public void resume1(){

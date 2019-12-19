@@ -1,4 +1,9 @@
 package com.example.mylivedata2;
+import android.arch.lifecycle.Lifecycle;
+import android.arch.lifecycle.LifecycleObserver;
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.OnLifecycleEvent;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.res.Configuration;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
@@ -12,6 +17,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daimajia.slider.library.SliderLayout;
@@ -32,12 +38,18 @@ public class Slider extends AppCompatActivity {
     Timer timer;
     int currentFrame;
     boolean timerStartFlag = true;
-    Imageeeeeeeeeee imageeeeeeeeeee;
+    MyObserver myObserver;
+    TextView tvCounter;
+
+    //for livedata
+    CounterViewModel counterViewModel;
+    Observer<Integer> dataObserver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_slider);
         viewPage = (ViewPager)findViewById(R.id.viewPage);
+        tvCounter = (TextView) findViewById(R.id.tvCounter);
         sliderDotspanel = (LinearLayout)findViewById(R.id.sliderDots);
         final ImageAdapter adapterView = new ImageAdapter(this);
         viewPage.setAdapter(adapterView);
@@ -55,9 +67,21 @@ public class Slider extends AppCompatActivity {
         }
 
         dots[0].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.active_dot));
+
+        //for livedata coutner and lifecycle observer
+        counterViewModel = ViewModelProviders.of(this).get(CounterViewModel.class);
+        dataObserver = new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                tvCounter.setText("Name = "+viewPage.getCurrentItem()+", Counter = "+integer);
+            }
+        };
+        counterViewModel.getCounter().observe(this, dataObserver);
         //observeImage();
-        imageeeeeeeeeee = new Imageeeeeeeeeee();
-        getLifecycle().addObserver(imageeeeeeeeeee);
+        myObserver = new MyObserver();
+        getLifecycle().addObserver(myObserver);
+
+
 
         viewPage.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -135,23 +159,24 @@ public class Slider extends AppCompatActivity {
     protected void onPause() {
         Log.i("Myy pause"," pause");
 
-        try {
+        /*try {
             currentFrame = viewPage.getCurrentItem();
 
             Log.i("My pause frameNumber = ",currentFrame+"");
             getCurFrameFromAnimationDrawable(viewPage);
-            super.onPause();
         }
         catch (Exception e)
         {
             Log.i("My Error ",e+"");
-        }
+        }*/
+        super.onPause();
+
     }
 
     @Override
     protected void onResume() {
-        Log.i("My resume frameNumber=",currentFrame+"");
-        setCurFrameToAnimationDrawable(viewPage, (currentFrame));
+        /*Log.i("My resume frameNumber=",currentFrame+"");
+        setCurFrameToAnimationDrawable(viewPage, (currentFrame));*/
 
         super.onResume();
     }
@@ -193,6 +218,7 @@ public class Slider extends AppCompatActivity {
         }
     }
 
+    ////////////////////////
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);
@@ -206,4 +232,34 @@ public class Slider extends AppCompatActivity {
         Log.i("My onRestoreInstanceSt=","savedInstanceState = "+savedInstanceState+", persistentState"+persistentState);
 
     }
+    ////////////////////////
+
+
+
+
+    //for lifecycle observer
+    public class MyObserver implements LifecycleObserver {
+        @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+        public void pause1()
+        {
+            Log.i("My new Observer ","pause");
+            try {
+                currentFrame = viewPage.getCurrentItem();
+
+                Log.i("My pause frameNumber = ",currentFrame+"");
+                getCurFrameFromAnimationDrawable(viewPage);
+            }
+            catch (Exception e)
+            {
+                Log.i("My Error ",e+"");
+            }
+        }
+        @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+        public void resume1(){
+            Log.i("My new Observer ","resume");
+            Log.i("My resume frameNumber=",currentFrame+"");
+            setCurFrameToAnimationDrawable(viewPage, (currentFrame));
+        }
+    }
+
 }
