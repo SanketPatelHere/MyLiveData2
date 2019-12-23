@@ -12,7 +12,7 @@ public class ImageAdapter extends PagerAdapter {
     Context context;
     private int sliderImageId[] = new int[]
             {
-              R.drawable.a0, R.drawable.a1, R.drawable.a2, R.drawable.a3, R.drawable.a4,
+              R.drawable.a0, R.drawable.a1, R.drawable.a2, R.drawable.a3, R.drawable.a4, R.drawable.a5,
             };
     public ImageAdapter(Context c)
     {

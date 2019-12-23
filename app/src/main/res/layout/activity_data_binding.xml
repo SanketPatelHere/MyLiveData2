@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable name="name" type="String"/>
+        <variable name="lastName" type="String" android:onClick="@{()->lastName.onLike()}"/>
+
+        <variable
+            name="person"
+            type="com.example.mylivedata2.Person" />
+        <variable
+            name="handlers"
+            type="com.example.mylivedata2.DataBinding.MyPresenter" />
+        
+
+        <variable
+            name="viewModel"
+            type="com.example.mylivedata2.PersonViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".DataBinding"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/plain_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{name}"
+            android:textSize="25sp"
+            android:background="#ddccbb"/>
+
+        <TextView
+            android:id="@+id/plain_lastname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{lastName}"
+            android:textSize="25sp"
+            android:background="#bbccdd"/>
+
+        <TextView
+            android:id="@+id/plain_hobby"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{person.hobby}"
+            android:textSize="25sp"
+            android:background="#ddeecc"
+            android:onClick="@{() -> handlers.onSaveClick(person)}"/>
+
+        <TextView
+            android:id="@+id/plain_education"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Change name"
+            android:textSize="25sp"
+            android:background="#ddeecc"
+            android:onClick="@{handlers::onButtonClicked}"/>
+
+
+
+
+
+
+
+        <TextView
+            android:id="@+id/tvname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.userMutableLiveData.name}"
+            android:textSize="25sp"
+            android:background="#ddccbb"/>
+
+        <TextView
+            android:id="@+id/tvlastname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.userMutableLiveData.lastname}"
+            android:textSize="25sp"
+            android:background="#bbccdd"/>
+
+        <TextView
+            android:id="@+id/tvhobby"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.userMutableLiveData.hobby}"
+            android:textSize="25sp"
+            android:background="#ddeecc"
+            android:onClick="@{() -> handlers.onSaveClick(person)}"/>
+        <Button
+            android:id="@+id/btnChangeUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Change User"
+            android:textSize="25sp"
+            android:background="#eeccdd"
+            android:onClick="@{() -> viewModel.changeUser()}"/>
+
+    </LinearLayout>
+</layout>

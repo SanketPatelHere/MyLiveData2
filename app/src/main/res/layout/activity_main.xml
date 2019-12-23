@@ -39,4 +39,11 @@
         android:text="Slide"
         android:textSize="25sp"
         android:background="#ccaadd"/>
+    <Button
+        android:id="@+id/btn5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Data Binding"
+        android:textSize="25sp"
+        android:background="#ccddaa"/>
 </LinearLayout>

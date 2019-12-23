@@ -40,7 +40,7 @@ public class Slider extends AppCompatActivity {
     boolean timerStartFlag = true;
     MyObserver myObserver;
     TextView tvCounter;
-
+    ImageAdapter adapterView;
     //for livedata
     CounterViewModel counterViewModel;
     Observer<Integer> dataObserver;
@@ -51,7 +51,7 @@ public class Slider extends AppCompatActivity {
         viewPage = (ViewPager)findViewById(R.id.viewPage);
         tvCounter = (TextView) findViewById(R.id.tvCounter);
         sliderDotspanel = (LinearLayout)findViewById(R.id.sliderDots);
-        final ImageAdapter adapterView = new ImageAdapter(this);
+        adapterView = new ImageAdapter(this);
         viewPage.setAdapter(adapterView);
 
         dotsCount = adapterView.getCount();  //5 images
@@ -110,9 +110,6 @@ public class Slider extends AppCompatActivity {
         viewPage.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                //Toast.makeText(Slider.this, "touched", Toast.LENGTH_SHORT).show();
-                //return false;
-
                 switch (event.getAction())
                 {
                     case MotionEvent.ACTION_DOWN:
@@ -132,7 +129,6 @@ public class Slider extends AppCompatActivity {
 
         if(savedInstanceState!=null)
         {
-            //int n2 = Integer.parseInt(savedInstanceState.getString("current")+"");
             String n2 = savedInstanceState.getString("current");
             Log.i("My savedInstanceState=","current = "+n2);
         }
@@ -185,13 +181,14 @@ public class Slider extends AppCompatActivity {
     {
 
         @Override
-        public void run() {
-            Slider.this.runOnUiThread(new Runnable() {
+        public void run() { //background thread
+            Slider.this.runOnUiThread(new Runnable() {  //ui thread
                 @Override
                 public void run() {
                     if(timerStartFlag == true) {
-
-                        if (viewPage.getCurrentItem() < 4) {
+                        //if(viewPage.getCurrentItem()<= adapterView.getCount()){//5
+                        if (viewPage.getCurrentItem() < viewPage.getChildCount()) {
+                        //if (viewPage.getCurrentItem() < 5) {
                             Log.i("My viewPage.getCurrentI", (viewPage.getCurrentItem()) + "");
                             viewPage.setCurrentItem(viewPage.getCurrentItem() + 1);
                         } else {
@@ -204,7 +201,6 @@ public class Slider extends AppCompatActivity {
     }
 
     //for rotation of activity
-
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
@@ -245,7 +241,6 @@ public class Slider extends AppCompatActivity {
             Log.i("My new Observer ","pause");
             try {
                 currentFrame = viewPage.getCurrentItem();
-
                 Log.i("My pause frameNumber = ",currentFrame+"");
                 getCurFrameFromAnimationDrawable(viewPage);
             }
