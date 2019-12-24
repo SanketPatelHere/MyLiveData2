@@ -53,4 +53,11 @@
         android:text="Card Demo"
         android:textSize="25sp"
         android:background="#ddccdd"/>
+    <Button
+        android:id="@+id/btn7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thread Demo"
+        android:textSize="25sp"
+        android:background="#ccdddd"/>
 </LinearLayout>

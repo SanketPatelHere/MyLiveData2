@@ -2,6 +2,7 @@ package com.example.mylivedata2;
 import android.content.res.TypedArray;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
@@ -26,24 +27,37 @@ public class CardDemo extends AppCompatActivity {
         setContentView(R.layout.activity_card_demo);
 
         sportsImageResources = getResources().obtainTypedArray(R.array.sports_images);
+        int gridColumnCount = getResources().getInteger(R.integer.grid_cloumn_count);//for 2 part
         //sportsList = new String[0];
         //sportsInfo = new String[0];
         mRecyclerView = findViewById(R.id.recyclerView);
 
         // Set the Layout Manager.
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //mRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this, gridColumnCount));
         mSportsData = new ArrayList<>();
 
         mAdapter = new SportsAdapter(this, mSportsData);
         mRecyclerView.setAdapter(mAdapter);
 
         initializeData();
-
-        ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper
+        int swipeDirs;
+        if(gridColumnCount > 1){
+            swipeDirs = 0;
+        } else {
+            swipeDirs = ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT;
+        }
+        /*ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper
                 .SimpleCallback(
                 ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT |
                         ItemTouchHelper.DOWN | ItemTouchHelper.UP,
-                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT)*/
+        ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper
+                .SimpleCallback(
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT |
+                        ItemTouchHelper.DOWN | ItemTouchHelper.UP,  swipeDirs)
+        {
 
             @Override
             public boolean onMove(RecyclerView recyclerView,

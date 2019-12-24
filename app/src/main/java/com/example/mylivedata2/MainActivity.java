@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    Button btn1, btn2, btn3, btn4, btn5, btn6;
+    Button btn1, btn2, btn3, btn4, btn5, btn6, btn7;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         btn4 = (Button)findViewById(R.id.btn4);
         btn5 = (Button)findViewById(R.id.btn5);
         btn6 = (Button)findViewById(R.id.btn6);
+        btn7 = (Button)findViewById(R.id.btn7);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,6 +58,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, CardDemo.class);
+                startActivity(i);
+            }
+        });
+        btn7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, ThreadDemo.class);
                 startActivity(i);
             }
         });
