@@ -31,6 +31,7 @@ public class ThreadDemo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 tv1.setText("Threadingggggg ");
+                //asyntacs = thread = worker thread
                 new MyAsyncTask(tv1).execute();
             }
         });
@@ -39,7 +40,7 @@ public class ThreadDemo extends AppCompatActivity {
         {
             Log.i("My saved updated2", savedInstanceState.getString("updated"));
             Log.i("My saved new2", savedInstanceState.getString("new"));
-            tv1.setText(savedInstanceState.getString("new"));
+            //tv1.setText(savedInstanceState.getString("new"));
         }
     }
 
@@ -64,7 +65,7 @@ public class ThreadDemo extends AppCompatActivity {
         {
             Log.i("My saved updated", savedInstanceState.getString("updated"));
             Log.i("My saved new", savedInstanceState.getString("new"));
-            tv1.setText(savedInstanceState.getString("new"));
+            //tv1.setText(savedInstanceState.getString("new"));
         }
     }
 

@@ -60,4 +60,11 @@
         android:text="Thread Demo"
         android:textSize="25sp"
         android:background="#ccdddd"/>
+    <Button
+        android:id="@+id/btn8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Book Demo"
+        android:textSize="25sp"
+        android:background="#ccdddd"/>
 </LinearLayout>
