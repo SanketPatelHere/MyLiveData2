@@ -45,5 +45,12 @@
         android:layout_height="wrap_content"
         android:text="Data Binding"
         android:textSize="25sp"
-        android:background="#ccddaa"/>
+        android:background="#ccddcc"/>
+    <Button
+        android:id="@+id/btn6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Card Demo"
+        android:textSize="25sp"
+        android:background="#ddccdd"/>
 </LinearLayout>

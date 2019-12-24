@@ -41,7 +41,7 @@ public class DataBinding extends AppCompatActivity {
         binding.setViewModel(pvModel);  //User, patel, playing
 
         binding.setLifecycleOwner(this);  //for binding livedata scope = for this activity
-        
+
     }
 
     public class MyPresenter
@@ -52,7 +52,6 @@ public class DataBinding extends AppCompatActivity {
         }
         public void onButtonClicked(View view)
         {
-
             Toast.makeText(DataBinding.this, "clicked onButtonClicked()", Toast.LENGTH_SHORT).show();
             if(i==1)
             {
